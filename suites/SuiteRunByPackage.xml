@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite Demo" verbose="1">
+    <test name="Run Test by Package">
+        <packages>
+            <package name="com.anhtester.Bai10_Annotations"/>
+        </packages>
+    </test>
+</suite>

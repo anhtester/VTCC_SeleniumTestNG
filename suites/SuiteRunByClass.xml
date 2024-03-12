@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite" verbose="1">
+    <test name="FirstTest">
+        <classes>
+            <class name="com.anhtester.Bai10_Annotations.DemoAnnotationCreateDriver" />
+            <class name="com.anhtester.Bai10_Annotations.DemoAnnotationBaseTest" />
+        </classes>
+    </test>
+</suite>

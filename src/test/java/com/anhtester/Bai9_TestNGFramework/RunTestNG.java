@@ -4,18 +4,31 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
 public class RunTestNG {
     WebDriver driver;
 
+    @BeforeSuite
+    public void beforeSuite() {
+        System.out.println("Đây là before suite");
+    }
+
+    @BeforeTest
+    public void beforeTest() {
+        System.out.println("Đây là before test");
+    }
+
+    @BeforeClass
+    public void beforeClass() {
+        System.out.println("Đây là before class");
+    }
+
     @BeforeMethod
     public void createDriver() {
+        System.out.println("Đây là before method");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -42,4 +55,5 @@ public class RunTestNG {
     public void closeDriver() {
         driver.quit();
     }
+
 }
