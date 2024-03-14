@@ -4,12 +4,10 @@
     <test name="FirstTest">
         <packages>
             <package name="com.anhtester.Bai10_Annotations"/>
+            <package name="com.anhtester.Bai10_Annotations"/>
         </packages>
         <classes>
             <class name="com.anhtester.Bai10_Annotations.DemoAnnotationCreateDriver">
-                <methods>
-                    <include name="testAnhTesterBlog"/>
-                </methods>
             </class>
             <class name="com.anhtester.Bai10_Annotations.DemoAnnotationBaseTest">
                 <methods>
