@@ -1,5 +1,6 @@
 package com.anhtester.common;
 
+import com.anhtester.keywords.WebUI;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
@@ -15,6 +16,9 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+
+        //Khởi tạo WebUI class để nhận giá trị driver cho biến toàn cục
+        new WebUI(driver);
     }
 
     @AfterMethod
