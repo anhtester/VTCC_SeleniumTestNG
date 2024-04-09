@@ -47,6 +47,17 @@ public class WebUI {
         return driver.findElement(by); //Tìm kiếm Element
     }
 
+    public static void clickElement(By by){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(second));
+        wait.until(ExpectedConditions.elementToBeClickable(by));
+        driver.findElement(by).click();
+    }
+    public static void setText(By by, String text){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(second));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+        driver.findElement(by).sendKeys(text);
+    }
+
     public static WebElement waitForElementVisible(WebDriver driver, By by, int second){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(second));
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));

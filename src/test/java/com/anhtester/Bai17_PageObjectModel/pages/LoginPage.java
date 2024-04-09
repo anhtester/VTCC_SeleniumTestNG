@@ -28,6 +28,7 @@ public class LoginPage {
     public void loginCRM(String email, String password) {
         driver.get(URL);
         driver.findElement(inputEmail).sendKeys(email);
+        //enterEmail(email);
         driver.findElement(inputPassword).sendKeys(password);
         driver.findElement(buttonLogin).click();
 
@@ -35,6 +36,10 @@ public class LoginPage {
 //        WebUI.waitForElementVisible(inputPassword).sendKeys(password);
 //        WebUI.waitForElementToBeClickable(inputEmail).click();
     }
+
+//    public void enterEmail(String email){
+//        driver.findElement(inputEmail).sendKeys(email);
+//    }
 
     public void verifyLoginSuccess() {
         Assert.assertFalse(driver.getCurrentUrl().contains("authentication"), "FAIL. Vẫn đang ở trang Login");
@@ -44,6 +49,14 @@ public class LoginPage {
         Assert.assertTrue(driver.getCurrentUrl().contains("authentication"), "FAIL. Không còn ở trang Login");
         Assert.assertTrue(driver.findElement(errorMessage).isDisplayed(), "Error message NOT displays");
         Assert.assertEquals(driver.findElement(errorMessage).getText(), "Invalid email or password", "Content of error massage NOT match.");
+    }
+
+    public void verifyRedirectToLoginPage(){
+        boolean checkHeader = WebUI.waitForElementVisible(headerPage).isDisplayed();
+        String textHeader = WebUI.waitForElementVisible(headerPage).getText();
+
+        Assert.assertTrue(checkHeader, "The header of Login page not display.");
+        Assert.assertEquals(textHeader, "Login", "The header content of Login page not match.");
     }
 
 }
