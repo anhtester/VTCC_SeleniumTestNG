@@ -1,5 +1,6 @@
 package com.anhtester.common;
 
+import com.anhtester.Bai21_ThucHanhPOM_CommonPage.pages.CommonPage;
 import com.anhtester.keywords.WebUI;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
