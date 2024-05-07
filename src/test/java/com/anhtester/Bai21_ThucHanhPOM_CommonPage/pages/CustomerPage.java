@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-public class CustomerPage extends CommonPage{
+public class CustomerPage extends CommonPage {
     private WebDriver driver;
 
     public CustomerPage(WebDriver driver) {
@@ -30,44 +30,41 @@ public class CustomerPage extends CommonPage{
 
     public CustomerPage verifyRedirectToCustomerPage() {
         WebUI.waitForPageLoaded();
-        boolean checkHeader = WebUI.waitForElementVisible(headerPage).isDisplayed();
+        boolean checkHeader = WebUI.isDisplayed(headerPage);
         System.out.println("Check Header Customer: " + checkHeader);
         Assert.assertTrue(checkHeader, "The header Customer page not display.");
         return this;
     }
 
     public CustomerPage addNewCustomer(String company) {
-        WebUI.waitForElementToBeClickable(buttonNewCustomer).click();
-        //WebUI.waitForElementVisible(inputCompany).sendKeys(company);
-        WebUI.setText(inputCompany, company);
-        WebUI.waitForElementVisible(inputVAT).sendKeys("10");
-        WebUI.waitForElementVisible(inputPhone).sendKeys("0123456789");
-        WebUI.waitForElementVisible(inputWebsite).sendKeys("https://viettel.com.vn");
-        //WebUI.waitForElementToBeClickable(buttonSave).click();
-        WebUI.clickElement(buttonSave);
         WebUI.waitForPageLoaded();
-
+        WebUI.clickElement(buttonNewCustomer);
+        WebUI.setText(inputCompany, company);
+        WebUI.setText(inputVAT, "10");
+        WebUI.setText(inputPhone, "0123456789");
+        WebUI.setText(inputWebsite, "https://viettel.com.vn");
+        WebUI.clickElement(buttonSave);
         return this;
     }
 
-    public CustomerPage verifyAddNewCustomer(String company){
+    public CustomerPage verifyAddNewCustomer(String company) {
         new DashboardPage(driver).openCustomerPage();
         WebUI.waitForPageLoaded();
-        WebUI.waitForElementVisible(inputSearch).sendKeys(company);
+        WebUI.setText(inputSearch, company);
         WebUI.waitForPageLoaded();
         WebUI.sleep(2);
-        Assert.assertTrue(WebUI.waitForElementVisible(itemFirstCustomerOnTable).isDisplayed(), "The Customer not display.");
-        Assert.assertEquals(WebUI.waitForElementVisible(itemFirstCustomerOnTable).getText(), company, "The Company value not match.");
-        WebUI.waitForElementToBeClickable(itemFirstCustomerOnTable).click();
+        Assert.assertTrue(WebUI.isDisplayed(itemFirstCustomerOnTable), "The Customer not display.");
+        Assert.assertEquals(WebUI.getElementText(itemFirstCustomerOnTable), company, "The Company value not match.");
+        WebUI.clickElement(itemFirstCustomerOnTable);
         WebUI.waitForPageLoaded();
-        Assert.assertEquals(WebUI.waitForElementVisible(inputCompany).getAttribute("value"), company, "The Company name not match.");
-        Assert.assertEquals(WebUI.waitForElementVisible(inputVAT).getAttribute("value"), "10", "The VAT value not match.");
+        Assert.assertEquals(WebUI.getElementAttribute(inputCompany, "value"), company, "The Company name not match.");
+        Assert.assertEquals(WebUI.getElementAttribute(inputVAT, "value"), "10", "The VAT value not match.");
 
         return this;
     }
 
     public void verifyTotalCustomer(String totalValue) {
-        String total = WebUI.waitForElementVisible(labelTotalCustomer).getText();
+        String total = WebUI.getElementText(labelTotalCustomer);
         System.out.println("Total Actual: " + total);
         Assert.assertEquals(total, totalValue, "The total of Customer not match.");
     }

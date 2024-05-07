@@ -30,40 +30,40 @@ public class CustomerPage {
 
     public void verifyRedirectToCustomerPage() {
         WebUI.waitForPageLoaded();
-        boolean checkHeader = WebUI.waitForElementVisible(headerPage).isDisplayed();
+        boolean checkHeader = WebUI.isDisplayed(headerPage);
         System.out.println("Check Header Customer: " + checkHeader);
         Assert.assertTrue(checkHeader, "The header Customer page not display.");
     }
 
     public void addNewCustomer(String company) {
-        WebUI.waitForElementToBeClickable(buttonNewCustomer).click();
+        WebUI.clickElement(buttonNewCustomer);
         //WebUI.waitForElementVisible(inputCompany).sendKeys(company);
         WebUI.setText(inputCompany, company);
-        WebUI.waitForElementVisible(inputVAT).sendKeys("10");
-        WebUI.waitForElementVisible(inputPhone).sendKeys("0123456789");
-        WebUI.waitForElementVisible(inputWebsite).sendKeys("https://viettel.com.vn");
+        WebUI.setText(inputVAT, "10");
+        WebUI.setText(inputPhone, "0123456789");
+        WebUI.setText(inputWebsite, "https://viettel.com.vn");
         //WebUI.waitForElementToBeClickable(buttonSave).click();
         WebUI.clickElement(buttonSave);
         WebUI.waitForPageLoaded();
     }
 
-    public void verifyAddNewCustomer(String company){
+    public void verifyAddNewCustomer(String company) {
         new DashboardPage(driver).openCustomerPage();
         WebUI.waitForPageLoaded();
-        WebUI.waitForElementVisible(inputSearch).sendKeys(company);
+        WebUI.setText(inputSearch, company);
         WebUI.waitForPageLoaded();
         WebUI.sleep(2);
-        Assert.assertTrue(WebUI.waitForElementVisible(itemFirstCustomerOnTable).isDisplayed(), "The Customer not display.");
-        Assert.assertEquals(WebUI.waitForElementVisible(itemFirstCustomerOnTable).getText(), company, "The Company value not match.");
-        WebUI.waitForElementToBeClickable(itemFirstCustomerOnTable).click();
+        Assert.assertTrue(WebUI.isDisplayed(itemFirstCustomerOnTable), "The Customer not display.");
+        Assert.assertEquals(WebUI.getElementText(itemFirstCustomerOnTable), company, "The Company value not match.");
+        WebUI.clickElement(itemFirstCustomerOnTable);
         WebUI.waitForPageLoaded();
-        Assert.assertEquals(WebUI.waitForElementVisible(inputCompany).getAttribute("value"), company, "The Company name not match.");
-        Assert.assertEquals(WebUI.waitForElementVisible(inputVAT).getAttribute("value"), "10", "The VAT value not match.");
+        Assert.assertEquals(WebUI.getElementAttribute(inputCompany, "value"), company, "The Company name not match.");
+        Assert.assertEquals(WebUI.getElementAttribute(inputVAT, "value"), "10", "The VAT value not match.");
 
     }
 
     public void verifyTotalCustomer(String totalValue) {
-        String total = WebUI.waitForElementVisible(labelTotalCustomer).getText();
+        String total = WebUI.getElementText(labelTotalCustomer);
         System.out.println("Total Actual: " + total);
         Assert.assertEquals(total, totalValue, "The total of Customer not match.");
     }

@@ -21,21 +21,21 @@ public class CommonPage {
     public By itemLogout = By.xpath("//a[contains(@class,'dropdown-toggle profile')]/following-sibling::ul//a[normalize-space()='Logout']");
 
     public CustomerPage openCustomerPage() {
-        WebUI.waitForElementToBeClickable(menuCustomer).click();
+        WebUI.clickElement(menuCustomer);
         WebUI.waitForPageLoaded();
 
         return new CustomerPage(driver);
     }
 
     public void openProjectPage() {
-        WebUI.waitForElementToBeClickable(menuProject).click();
+        WebUI.clickElement(menuProject);
         WebUI.waitForPageLoaded();
     }
 
     public LoginPage logout() {
-        WebUI.waitForElementToBeClickable(dropdownProfile).click();
+        WebUI.clickElement(dropdownProfile);
         WebUI.sleep(1);
-        WebUI.waitForElementToBeClickable(itemLogout).click();
+        WebUI.clickElement(itemLogout);
         WebUI.waitForPageLoaded();
 
         return new LoginPage(driver);

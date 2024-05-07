@@ -26,10 +26,11 @@ public class LoginPage {
 
     //Chỉnh sửa hàm loginCRM để tạo liên kết trang đến trang DashboardPage
     public DashboardPage loginCRM(String email, String password) {
-        driver.get(URL);
-        WebUI.waitForElementVisible(inputEmail).sendKeys(email);
-        WebUI.waitForElementVisible(inputPassword).sendKeys(password);
-        WebUI.waitForElementToBeClickable(buttonLogin).click();
+        WebUI.openURL(URL);
+        WebUI.waitForPageLoaded();
+        WebUI.setText(inputEmail, email);
+        WebUI.setText(inputPassword, password);
+        WebUI.clickElement(buttonLogin);
 
         return new DashboardPage(driver);
     }
@@ -45,8 +46,8 @@ public class LoginPage {
     }
 
     public void verifyRedirectToLoginPage() {
-        boolean checkHeader = WebUI.waitForElementVisible(headerPage).isDisplayed();
-        String textHeader = WebUI.waitForElementVisible(headerPage).getText();
+        boolean checkHeader = WebUI.isDisplayed(headerPage);
+        String textHeader = WebUI.getElementText(headerPage);
 
         Assert.assertTrue(checkHeader, "The header of Login page not display.");
         Assert.assertEquals(textHeader, "Login", "The header content of Login page not match.");

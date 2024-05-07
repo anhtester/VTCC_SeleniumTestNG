@@ -18,18 +18,18 @@ public class DashboardPage extends CommonPage{
 
     public void verifyRedirectToDashboardPage() {
         WebUI.waitForPageLoaded();
-        boolean checkMenuDashboard = WebUI.waitForElementVisible(menuDashboard).isDisplayed();
+        boolean checkMenuDashboard = WebUI.isDisplayed(menuDashboard);
         System.out.println("Check Menu Dashboard: " + checkMenuDashboard);
         Assert.assertTrue(checkMenuDashboard, "The menu Dashboard page not display.");
     }
 
     public void openPage(String menuName) {
         WebUI.waitForPageLoaded();
-        WebUI.waitForElementToBeClickable(By.xpath("//span[normalize-space()='" + menuName + "']")).click();
+        WebUI.clickElement(By.xpath("//span[normalize-space()='" + menuName + "']"));
     }
 
     public void verifyTotalOfTasksNotFinished(String totalValue) {
-        String total = WebUI.waitForElementVisible(labelTotalTasksNotFinished).getText();
+        String total = WebUI.getElementText(labelTotalTasksNotFinished);
         System.out.println("Total Actual: " + total);
         Assert.assertEquals(total, totalValue, "The total of Tasks Not Finished not match.");
     }

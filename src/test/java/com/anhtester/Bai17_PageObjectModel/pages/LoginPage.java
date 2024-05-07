@@ -52,8 +52,8 @@ public class LoginPage {
     }
 
     public void verifyRedirectToLoginPage(){
-        boolean checkHeader = WebUI.waitForElementVisible(headerPage).isDisplayed();
-        String textHeader = WebUI.waitForElementVisible(headerPage).getText();
+        boolean checkHeader = WebUI.isDisplayed(headerPage);
+        String textHeader = WebUI.getElementText(headerPage);
 
         Assert.assertTrue(checkHeader, "The header of Login page not display.");
         Assert.assertEquals(textHeader, "Login", "The header content of Login page not match.");

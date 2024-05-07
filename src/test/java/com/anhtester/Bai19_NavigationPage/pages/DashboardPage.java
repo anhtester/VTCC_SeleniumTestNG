@@ -23,35 +23,35 @@ public class DashboardPage {
 
     public void verifyRedirectToDashboardPage() {
         WebUI.waitForPageLoaded();
-        boolean checkMenuDashboard = WebUI.waitForElementVisible(menuDashboard).isDisplayed();
+        boolean checkMenuDashboard = WebUI.isDisplayed(menuDashboard);
         System.out.println("Check Menu Dashboard: " + checkMenuDashboard);
         Assert.assertTrue(checkMenuDashboard, "The menu Dashboard page not display.");
     }
 
     //Liên kết đến trang CustomerPage
     public CustomerPage openCustomerPage() {
-        WebUI.waitForElementToBeClickable(menuCustomer).click();
+        WebUI.clickElement(menuCustomer);
         WebUI.waitForPageLoaded();
 
         return new CustomerPage(driver);
     }
 
     public void openProjectPage() {
-        WebUI.waitForElementToBeClickable(menuProject).click();
+        WebUI.clickElement(menuProject);
         WebUI.waitForPageLoaded();
     }
 
     public LoginPage logout() {
-        WebUI.waitForElementToBeClickable(dropdownProfile).click();
+        WebUI.clickElement(dropdownProfile);
         WebUI.sleep(1);
-        WebUI.waitForElementToBeClickable(itemLogout).click();
+        WebUI.clickElement(itemLogout);
         WebUI.waitForPageLoaded();
 
         return new LoginPage(driver);
     }
 
     public void verifyTotalOfTasksNotFinished(String totalValue) {
-        String total = WebUI.waitForElementVisible(labelTotalTasksNotFinished).getText();
+        String total = WebUI.getElementText(labelTotalTasksNotFinished);
         System.out.println("Total Actual: " + total);
         Assert.assertEquals(total, totalValue, "The total of Tasks Not Finished not match.");
     }
