@@ -1,11 +1,11 @@
-package com.anhtester.Bai21_ThucHanhPOM_CommonPage.pages;
+package com.anhtester.Bai22_23_Keywords.pages;
 
 import com.anhtester.keywords.WebUI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-public class LoginPage extends CommonPage{
+public class LoginPage extends CommonPage {
 
     //Khai báo driver cục bộ để chứa giá trị driver truyền vào
     private WebDriver driver;

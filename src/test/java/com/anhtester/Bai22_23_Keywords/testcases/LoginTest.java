@@ -1,9 +1,8 @@
-package com.anhtester.Bai21_ThucHanhPOM_CommonPage.testcases;
+package com.anhtester.Bai22_23_Keywords.testcases;
 
-import com.anhtester.Bai21_ThucHanhPOM_CommonPage.pages.CommonPage;
-import com.anhtester.Bai21_ThucHanhPOM_CommonPage.pages.LoginPage;
+import com.anhtester.Bai22_23_Keywords.pages.CommonPage;
+import com.anhtester.Bai22_23_Keywords.pages.LoginPage;
 import com.anhtester.common.BaseTest;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
