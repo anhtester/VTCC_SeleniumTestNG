@@ -1,0 +1,34 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite Test" verbose="1">
+    <parameter name="val1" value="12"/>
+    <parameter name="val2" value="13"/>
+    <parameter name="val3" value="5"/>
+    <parameter name="val4" value="6"/>
+    <parameter name="val6" value="5"/>
+
+    <test name="Test Parameter 1">
+        <classes>
+            <!--            <class name="com.anhtester.Bai24_Parameter_MultiBrowser.DemoParameter">-->
+            <!--                &lt;!&ndash;                <methods>&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    <include name="del"/>&ndash;&gt;-->
+            <!--                &lt;!&ndash;                </methods>&ndash;&gt;-->
+            <!--            </class>-->
+            <class name="com.anhtester.Bai24_Parameter_MultiBrowser.DemoParameter">
+                <methods>
+                    <include name="sub"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test Parameter 2">
+        <classes>
+            <class name="com.anhtester.Bai24_Parameter_MultiBrowser.DemoParameter">
+                <!--                <methods>-->
+                <!--                    <include name="del"/>-->
+                <!--                </methods>-->
+            </class>
+        </classes>
+    </test>
+</suite>

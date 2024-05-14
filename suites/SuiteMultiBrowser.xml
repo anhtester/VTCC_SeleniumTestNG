@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite Test" verbose="1">
+
+<!--    <parameter name="browserName" value="edge"/>-->
+
+    <test name="Test Multiple Browser 1">
+        <parameter name="browserName" value="chrome"/>
+        <classes>
+            <class name="com.anhtester.Bai24_Parameter_MultiBrowser.DemoMultiBrowser">
+                <methods>
+                    <include name="testLoginSuccess"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test Multiple Browser 2">
+        <parameter name="browserName" value="firefox"/>
+        <classes>
+            <class name="com.anhtester.Bai24_Parameter_MultiBrowser.DemoMultiBrowser">
+                <methods>
+                    <include name="testLoginFailWithEmailInvalid"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
